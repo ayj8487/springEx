@@ -24,7 +24,7 @@ public class OrderApp {
 		Member member =	new Member(memberId, "memberA", Grade.VIP);
 		memberService.join(member);
 		
-		Order order =  orderService.createOrder(memberId, "itemA", 10000);
+		Order order =  orderService.createOrder(memberId, "itemA", 30000);
 		
 		System.out.println("order = "+ order); //주문조회
 		System.out.println("order.calculatePrice = "+ order.calculatePrice()); // 할인된 가격
