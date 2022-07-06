@@ -11,10 +11,10 @@ import hello.core.member.MemoryMemberRepository;
 
 public class OrderServiceImpl implements OrderService{
 	//1. 주문생성 요청
-	private final MemberRepository memberRepository = new MemoryMemberRepository(); //회원 찾기 
+//	private final MemberRepository memberRepository = new MemoryMemberRepository(); //회원 찾기 
 	//2. 회원정보 조회
 		
-	private final DiscountPolicy discountPolicy = new FixDiscountPolicy(); //고정 할인 정책 
+//	private final DiscountPolicy discountPolicy = new FixDiscountPolicy(); //고정 할인 정책 
 //	private final DiscountPolicy discountPolicy = new RateDiscountPolicy(); //정률 할인 정책 
 	
 	// *** 문제점 : 할인을 고정 => 정률 로 변경시 
@@ -32,8 +32,22 @@ public class OrderServiceImpl implements OrderService{
 	// 하지만 이 로직은 구현체가 없기때문에 nullPoint 오류가 발생한다.
 
 	// 이 문제를 해결 하려면 누군가가 클라이언트 OrderServiceImpl에 DiscountPolicy 의 구현 
-	// 객체를 대신 생성하고 주입 해 주어야 한다 (스프링)
+	// 객체를 대신 생성하고 주입 해 주어야 한다
+
+	// 해경방법 
+	private final MemberRepository memberRepository;
+	private final DiscountPolicy discountPolicy;
 	
+	
+	// 생성자 생성
+	public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+		super();
+		this.memberRepository = memberRepository;
+		this.discountPolicy = discountPolicy;
+	}
+
+
+
 	@Override
 	public Order createOrder(Long memberId, String itemName, int itemPrice) {
 		Member member = memberRepository.findById(memberId); //회원찾기 
