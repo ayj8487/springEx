@@ -1,5 +1,7 @@
 package hello.core.singleton;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -31,4 +33,21 @@ public class SingletonTest {
 		// 테스트가 성공하면 다른객체라는 것을 검증 하는 것 
 	}
 
+	@Test
+	@DisplayName("싱글톤 패턴을 적용한 객체 사용")
+
+	void singletonServiceTest() {
+	// new SingletonService() 이 로직을 실행해 객체를 생성하려면 private 싱글톤 패턴으로 지정해 놨기에 오류가 실행된다. 
+		SingletonService singletonService1 = SingletonService.getInstance();
+		SingletonService singletonService2 = SingletonService.getInstance();
+		
+		System.out.println("singletonService1 = " + singletonService1);
+		System.out.println("singletonService2 = " + singletonService2);
+		
+		assertThat(singletonService1).isSameAs(singletonService2);
+
+		// 싱글톤 패턴 적용시 같은 객체를 불러온다 .
+	
+	 // 위와같이 싱글톤을 적용하여 로직을 일일히 짜야하지만 스프링을 사용하면 스프링은 알아서 싱글톤을 잡아준다
+	}
 }
