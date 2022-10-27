@@ -5,6 +5,7 @@ import java.util.concurrent.ThreadPoolExecutor.DiscardPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import hello.core.annotation.MainDiscountPolicy;
 import hello.core.discount.DiscountPolicy;
 import hello.core.discount.FixDiscountPolicy;
 import hello.core.discount.RateDiscountPolicy;
@@ -14,7 +15,7 @@ import hello.core.member.MemoryMemberRepository;
 import lombok.RequiredArgsConstructor;
 
 @Component
-@RequiredArgsConstructor
+// @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService{
 	//1. 주문생성 요청
 //	private final MemberRepository memberRepository = new MemoryMemberRepository(); //회원 찾기 
@@ -49,12 +50,12 @@ public class OrderServiceImpl implements OrderService{
 	// 생성자 생성
 	
 	// @rombok 으로 자동완성
-//	@Autowired
-//	public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-//		super();
-//		this.memberRepository = memberRepository;
-//		this.discountPolicy = discountPolicy;
-//	}
+	@Autowired
+	public OrderServiceImpl(MemberRepository memberRepository,@MainDiscountPolicy DiscountPolicy discountPolicy) {
+		super();
+		this.memberRepository = memberRepository;
+		this.discountPolicy = discountPolicy;
+	}
 
 
 
