@@ -33,19 +33,29 @@ public class NetworkClient implements InitializingBean, DisposableBean{
 	}
 
 	// 콜백을 받는방법
-	@Override
-	public void afterPropertiesSet() throws Exception {
+	public void init()  {
 	//프러퍼티 들이 세팅 (의존관계 주입)이 끝나면 콜백을 호출하겠다라는 메서드
 	
-		System.out.println("NetworkClinet.afterPropertiesSet");
+		System.out.println("NetworkClinet.init");
 		connect();
 		call("초기화 연결 메시지");
 	}
 
+	public void close()  {
+		System.out.println();
+		disconnect();
+	}
+
 	@Override
 	public void destroy() throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
 
-		disconnect();
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
