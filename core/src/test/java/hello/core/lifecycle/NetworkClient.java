@@ -1,6 +1,9 @@
 package hello.core.lifecycle;
 
-public class NetworkClient {
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+
+public class NetworkClient implements InitializingBean, DisposableBean{
 
 	private String url; //접속해야할 서버의 가상 url
 	
@@ -27,6 +30,22 @@ public class NetworkClient {
 	//서비스 종료시 호출
 	public void disconnect () {
 		System.out.println("close :" + url);
+	}
+
+	// 콜백을 받는방법
+	@Override
+	public void afterPropertiesSet() throws Exception {
+	//프러퍼티 들이 세팅 (의존관계 주입)이 끝나면 콜백을 호출하겠다라는 메서드
+	
+		System.out.println("NetworkClinet.afterPropertiesSet");
+		connect();
+		call("초기화 연결 메시지");
+	}
+
+	@Override
+	public void destroy() throws Exception {
+
+		disconnect();
 	}
 	
 }
