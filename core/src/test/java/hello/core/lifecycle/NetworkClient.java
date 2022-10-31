@@ -1,5 +1,8 @@
 package hello.core.lifecycle;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
@@ -33,6 +36,8 @@ public class NetworkClient implements InitializingBean, DisposableBean{
 	}
 
 	// 콜백을 받는방법
+	
+	@PostConstruct
 	public void init()  {
 	//프러퍼티 들이 세팅 (의존관계 주입)이 끝나면 콜백을 호출하겠다라는 메서드
 	
@@ -41,6 +46,7 @@ public class NetworkClient implements InitializingBean, DisposableBean{
 		call("초기화 연결 메시지");
 	}
 
+	@PreDestroy
 	public void close()  {
 		System.out.println();
 		disconnect();
@@ -57,5 +63,6 @@ public class NetworkClient implements InitializingBean, DisposableBean{
 		// TODO Auto-generated method stub
 		
 	}
+	}
 	
-}
+
