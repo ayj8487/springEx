@@ -1,6 +1,5 @@
 package hello.core.order;
 
-import java.util.concurrent.ThreadPoolExecutor.DiscardPolicy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -12,7 +11,6 @@ import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
-import lombok.RequiredArgsConstructor;
 
 @Component
 // @RequiredArgsConstructor
