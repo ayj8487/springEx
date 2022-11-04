@@ -1,4 +1,4 @@
-# Spring-inflearn 핵심강의 기본편
+# Spring-inflearn 핵심원리 기본편
 
 notion 정리노트
 https://dashing-postbox-b9f.notion.site/inflearn-Spring-18542b1850b44cbbb1dc0fd102587efa
